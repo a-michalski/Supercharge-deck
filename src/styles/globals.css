@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* Design System Colors - from SuperchargeAI guide */
+  --color-primary-yellow: #FEBE42;
+  --color-primary-yellow-light: #FFBF42;
+  --color-primary-yellow-dark: #F69E2C;
+  --color-primary-black: #000000;
+  --color-primary-dark: #0C0C0C;
+  --color-primary-white: #FFFFFF;
+  --color-primary-blue-1: #144D73;
+  --color-primary-blue-2: #2C899F;
+  --color-primary-pink-1: #FF7D67;
+  --color-primary-pink-2: #FF438B;
+  --color-primary-pink-3: #EA148C;
+  
+  --color-accent-1: #333233;
+  --color-accent-2: #FEBE42;
+  --color-accent-3: #F9F008;
+  --color-accent-4: #1E1408;
+  --color-accent-5: #31BFC7;
+  --color-accent-6: #46BAD8;
+  
+  --color-neutral-dark-1: #000000;
+  --color-neutral-light-1: #EDE9E6;
+  --color-neutral-dark-2: #385E48;
+  --color-neutral-light-2: #FFFFFF;
+  --color-neutral-gray-1: #9E9E9E;
+  --color-neutral-gray-2: #666666;
+  --color-neutral-gray-3: #D9D9D9;
+  --color-neutral-gray-4: #F5F5F5;
+  
+  /* Spacing System - 4px/8px base */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+  --space-13: 128px;
+  
+  /* Font Family */
+  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Shadcn-compatible variables - Light theme */
+  --background: #FFFFFF;
+  --foreground: var(--color-primary-black);
+  --card: #FFFFFF;
+  --card-foreground: var(--color-primary-black);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--color-primary-black);
+  --primary: var(--color-primary-yellow);
+  --primary-foreground: var(--color-primary-black);
+  --secondary: var(--color-neutral-gray-4);
+  --secondary-foreground: var(--color-primary-black);
+  --muted: var(--color-neutral-gray-4);
+  --muted-foreground: var(--color-neutral-gray-2);
+  --accent: var(--color-primary-yellow);
+  --accent-foreground: var(--color-primary-black);
+  --destructive: #dc2626;
+  --destructive-foreground: var(--color-primary-white);
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.05);
+  --input-background: rgba(0, 0, 0, 0.02);
+  --switch-background: var(--color-neutral-gray-3);
+  --ring: var(--color-primary-yellow);
+  --chart-1: var(--color-primary-yellow);
+  --chart-2: var(--color-accent-5);
+  --chart-3: var(--color-primary-pink-2);
+  --chart-4: var(--color-primary-blue-2);
+  --chart-5: var(--color-accent-3);
+  --radius: 0.5rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: var(--color-primary-black);
+  --sidebar-primary: var(--color-primary-yellow);
+  --sidebar-primary-foreground: var(--color-primary-black);
+  --sidebar-accent: rgba(254, 190, 66, 0.1);
+  --sidebar-accent-foreground: var(--color-primary-black);
+  --sidebar-border: rgba(0, 0, 0, 0.1);
+  --sidebar-ring: var(--color-primary-yellow);
+}
+
+.dark {
+  --background: var(--color-primary-dark);
+  --foreground: var(--color-primary-white);
+  --card: #1a1a1a;
+  --card-foreground: var(--color-primary-white);
+  --popover: #1a1a1a;
+  --popover-foreground: var(--color-primary-white);
+  --primary: var(--color-primary-orange-2);
+  --primary-foreground: var(--color-primary-black);
+  --secondary: var(--color-accent-5);
+  --secondary-foreground: var(--color-primary-white);
+  --muted: var(--color-accent-1);
+  --muted-foreground: var(--color-neutral-gray-1);
+  --accent: var(--color-primary-orange-1);
+  --accent-foreground: var(--color-primary-black);
+  --destructive: #dc2626;
+  --destructive-foreground: var(--color-primary-white);
+  --border: rgba(254, 190, 66, 0.2);
+  --input: rgba(254, 190, 66, 0.1);
+  --ring: var(--color-primary-orange-2);
+  --chart-1: var(--color-primary-orange-2);
+  --chart-2: var(--color-accent-5);
+  --chart-3: var(--color-primary-pink-2);
+  --chart-4: var(--color-primary-blue-2);
+  --chart-5: var(--color-accent-3);
+  --sidebar: var(--color-primary-dark);
+  --sidebar-foreground: var(--color-primary-white);
+  --sidebar-primary: var(--color-primary-orange-2);
+  --sidebar-primary-foreground: var(--color-primary-black);
+  --sidebar-accent: rgba(254, 190, 66, 0.1);
+  --sidebar-accent-foreground: var(--color-primary-white);
+  --sidebar-border: rgba(254, 190, 66, 0.2);
+  --sidebar-ring: var(--color-primary-orange-2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-primary);
+  }
+
+  /* Enhanced focus states for accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-primary-yellow);
+    outline-offset: 2px;
+  }
+
+  /* Screen reader only class */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only.focus:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}

@@ -1,0 +1,85 @@
+name: Convert Figma Make Images
+
+on:
+  push:
+    branches:
+      - main
+      - vercel
+      - '**'  # Run on all branches
+    paths:
+      - 'public/assets/**/*.png'
+      - 'src/assets/**/*.png'
+
+jobs:
+  convert-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for PNG files
+        id: check-files
+        run: |
+          echo "Checking for PNG files in assets directories..."
+          if find public/assets src/assets -name "*.png" -type f 2>/dev/null | grep -q .; then
+            echo "has_png=true" >> $GITHUB_OUTPUT
+            echo "Found PNG files to check"
+          else
+            echo "has_png=false" >> $GITHUB_OUTPUT
+            echo "No PNG files found in assets directories"
+          fi
+
+      - name: Convert base64 images to binary
+        if: steps.check-files.outputs.has_png == 'true'
+        id: convert-images
+        run: |
+          echo "Running image conversion script..."
+          node scripts/decode-base64-images.js
+          
+          # Check if any files were modified
+          git diff --name-only --exit-code public/assets src/assets 2>/dev/null || CHANGED=true
+          if [ "$CHANGED" = "true" ]; then
+            CONVERTED=$(git diff --name-only --diff-filter=M public/assets src/assets 2>/dev/null | grep -E '\.png$' || true)
+            if [ -n "$CONVERTED" ]; then
+              echo "converted=true" >> $GITHUB_OUTPUT
+              echo "converted_files<<EOF" >> $GITHUB_OUTPUT
+              echo "$CONVERTED" >> $GITHUB_OUTPUT
+              echo "EOF" >> $GITHUB_OUTPUT
+              echo "Files converted:"
+              echo "$CONVERTED"
+            else
+              echo "converted=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "converted=false" >> $GITHUB_OUTPUT
+            echo "No files needed conversion (all already binary)"
+          fi
+
+      - name: Commit converted files
+        if: steps.convert-images.outputs.converted == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add public/assets src/assets
+          git commit -m "chore: auto-convert base64 images to binary
+
+          Automatically converted base64-encoded PNG files from Figma Make to binary PNG files.
+          
+          Converted files:
+          ${{ steps.convert-images.outputs.converted_files }}"
+
+      - name: Push changes
+        if: steps.convert-images.outputs.converted == 'true'
+        run: |
+          git push origin HEAD:${{ github.ref_name }}
+
