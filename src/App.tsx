@@ -46,18 +46,18 @@ const slides = [
   { id: 0, title: 'Strona tytułowa', component: TitleSlide, duration: '1 min', icon: Presentation },
   { id: 1, title: 'O mnie', component: AboutSlide, duration: '2 min', icon: User },
   { id: 2, title: 'Powitanie', component: WorkshopWelcomeSlide, duration: '2 min', icon: Presentation },
-  { id: 3, title: 'Ramka nastawienia', component: AIMindsetSlide, duration: '2 min', icon: Brain },
-  { id: 4, title: 'Jak działają narzędzia AI', component: AIArchitectureSlide, duration: '2 min', icon: Layers },
-  { id: 5, title: 'Kontekst: pakiet modelu', component: ModelContextPackageSlide, duration: '2 min', icon: Database },
-  { id: 6, title: 'Zarządzanie kontekstem', component: ContextManagementSlide, duration: '2 min', icon: History },
-  { id: 7, title: 'Schemat pracy z agentem', component: AgentWorkflowSlide, duration: '3 min', icon: Route },
-  { id: 8, title: 'Weryfikacja deterministyczna', component: DeterministicVerificationSlide, duration: '3 min', icon: FileCheck2 },
-  { id: 9, title: 'Figma MCP', component: FigmaMcpIntroSlide, duration: '2 min', icon: Figma },
-  { id: 10, title: 'Instalacja Figma MCP', component: FigmaMcpInstallSlide, duration: '3 min', icon: Settings },
-  { id: 11, title: 'Narzędzia Figma MCP', component: FigmaMcpToolsSlide, duration: '4 min', icon: Wrench },
-  { id: 12, title: 'Pain: Foundations', component: FoundationsPainSlide, duration: '3 min', icon: Layers },
-  { id: 13, title: 'Pain: Atomic Design', component: AtomicDesignPainSlide, duration: '3 min', icon: Box },
-  { id: 14, title: 'Vibe coding vs Asistent design', component: VibeCodingSlide, duration: '2 min', icon: Lightbulb },
+  { id: 3, title: 'Vibe coding vs Asistent design', component: VibeCodingSlide, duration: '2 min', icon: Lightbulb },
+  { id: 4, title: 'Ramka nastawienia', component: AIMindsetSlide, duration: '2 min', icon: Brain },
+  { id: 5, title: 'Jak działają narzędzia AI', component: AIArchitectureSlide, duration: '2 min', icon: Layers },
+  { id: 6, title: 'Kontekst: pakiet modelu', component: ModelContextPackageSlide, duration: '2 min', icon: Database },
+  { id: 7, title: 'Zarządzanie kontekstem', component: ContextManagementSlide, duration: '2 min', icon: History },
+  { id: 8, title: 'Schemat pracy z agentem', component: AgentWorkflowSlide, duration: '3 min', icon: Route },
+  { id: 9, title: 'Weryfikacja deterministyczna', component: DeterministicVerificationSlide, duration: '3 min', icon: FileCheck2 },
+  { id: 10, title: 'Figma MCP', component: FigmaMcpIntroSlide, duration: '2 min', icon: Figma },
+  { id: 11, title: 'Instalacja Figma MCP', component: FigmaMcpInstallSlide, duration: '3 min', icon: Settings },
+  { id: 12, title: 'Narzędzia Figma MCP', component: FigmaMcpToolsSlide, duration: '4 min', icon: Wrench },
+  { id: 13, title: 'Pain: Foundations', component: FoundationsPainSlide, duration: '3 min', icon: Layers },
+  { id: 14, title: 'Pain: Atomic Design', component: AtomicDesignPainSlide, duration: '3 min', icon: Box },
   { id: 15, title: 'Narzędzia + Setup', component: ToolsSetupSlide, duration: '2 min', icon: Code },
   { id: 16, title: 'VS Code + Claude Code', component: CursorToolsSlide, duration: '3 min', icon: Sparkles },
   { id: 17, title: 'CLAUDE.md', component: CursorRulesSlide, duration: '3 min', icon: FileText },
@@ -248,6 +248,13 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentSlide]); // Re-attach listener when currentSlide changes
+
+  useEffect(() => {
+    const handleNextSlide = () => nextSlide();
+
+    window.addEventListener('presentation:next-slide', handleNextSlide);
+    return () => window.removeEventListener('presentation:next-slide', handleNextSlide);
+  }, [currentSlide]);
 
   // Auto-hide timer management
   const resetHideTimer = () => {
@@ -498,23 +505,20 @@ export default function App() {
 
       {/* Main Content */}
       <main className="pt-24 pb-20 px-6 container mx-auto" id="main-content">
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.div
-            key={currentSlide}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 }
-            }}
-            className="min-h-[calc(100vh-200px)] flex items-center justify-center"
-          >
-            <CurrentSlideComponent />
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={currentSlide}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.2 }
+          }}
+          className="min-h-[calc(100vh-200px)] flex items-center justify-center"
+        >
+          <CurrentSlideComponent />
+        </motion.div>
       </main>
 
       {/* Navigation - Auto-hide */}

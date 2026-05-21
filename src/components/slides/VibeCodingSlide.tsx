@@ -6,7 +6,7 @@ export default function VibeCodingSlide() {
   const vibeCoding = {
     title: 'Vibe Coding',
     icon: Zap,
-    color: '#FF438B',
+    color: '#EA148C',
     description: 'Eksploracja bez planu. Rzucasz AI ideę, iterujesz na bieżąco.',
     scope: 'Małe zmiany dotyczące struktury',
     when: 'Prototypy, MVP, eksperymenty (30-50% wizji)',
@@ -24,7 +24,7 @@ export default function VibeCodingSlide() {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function VibeCodingSlide() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay }}
             >
-              <Card className="bg-white border-gray-200 shadow-md p-6 h-full hover:shadow-lg transition-shadow flex flex-col">
+              <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-6 h-full hover:shadow-lg transition-shadow flex flex-col">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-lg" style={{ backgroundColor: `${approach.color}15` }}>
                     <Icon className="w-8 h-8" style={{ color: approach.color }} />
@@ -95,7 +95,7 @@ export default function VibeCodingSlide() {
         transition={{ delay: 0.6 }}
         className="text-center"
       >
-        <Card className="bg-white border-gray-200 p-6">
+        <Card className="bg-[#EDE9E6] border-black/15 p-6">
           <h4 className="text-sm uppercase tracking-wide text-gray-600 mb-3" style={{ fontWeight: 600 }}>
             Sekwencja
           </h4>

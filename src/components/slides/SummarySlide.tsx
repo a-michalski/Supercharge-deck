@@ -10,7 +10,7 @@ export default function SummarySlide() {
       title: 'ZAWSZE używaj GIT',
       desc: 'Main branch zawsze stabilny, eksperymenty z AI na oddzielnych branchach.',
       highlight: 'To Twoje ubezpieczenie.',
-      color: '#FF438B'
+      color: '#EA148C'
     },
     {
       icon: Save,
@@ -34,7 +34,7 @@ export default function SummarySlide() {
       title: 'Trust but verify',
       desc: 'AI jest narzędziem, nie magią. Czytaj co generuje.',
       highlight: 'Ty jesteś szefem.',
-      color: '#46BAD8'
+      color: '#445469'
     },
     {
       icon: FileCode,
@@ -50,7 +50,7 @@ export default function SummarySlide() {
       title: 'Wybierz odpowiednią ścieżkę',
       desc: 'Od zera / Z referencją / Z designu - każda ma swoje miejsce.',
       highlight: 'Dopasuj narzędzie do problemu.',
-      color: '#FF438B'
+      color: '#EA148C'
     },
     {
       icon: RotateCcw,
@@ -63,7 +63,7 @@ export default function SummarySlide() {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export default function SummarySlide() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + idx * 0.1 }}
             >
-              <Card className="bg-white border-gray-200 shadow-md p-5 h-full hover:shadow-lg transition-shadow">
+              <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-5 h-full hover:shadow-lg transition-shadow">
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg flex-shrink-0" style={{ backgroundColor: `${takeaway.color}20` }}>
                     <Icon className="w-5 h-5" style={{ color: takeaway.color }} />
@@ -114,7 +114,7 @@ export default function SummarySlide() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9 }}
       >
-        <Card className="bg-gradient-to-r from-[#FEBE42] to-[#FFBF42] border-[#FEBE42] shadow-lg p-8 text-center">
+        <Card className="bg-gradient-to-r from-[#FEBE42] to-[#FEBE42] border-[#FEBE42] shadow-lg p-8 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Lightbulb className="w-7 h-7 text-black" />
             <h3 className="text-2xl text-black" style={{ fontWeight: 800 }}>Ostatnia myśl</h3>

@@ -7,9 +7,9 @@ export default function CursorRulesSlide() {
   const leftContent = (
     <div className="space-y-4">
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-purple-500/20">
+        <div className="p-2 rounded-lg bg-[#445469]/20">
           <svg
-            className="w-6 h-6 text-purple-500"
+            className="w-6 h-6 text-[#445469]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -18,13 +18,13 @@ export default function CursorRulesSlide() {
           </svg>
         </div>
         <div>
-          <h3 className="text-white" style={{ fontWeight: 700 }}>CLAUDE.md</h3>
-          <p className="text-white/60 text-sm">AI-Augmented Engineering Rules</p>
+          <h3 className="text-black" style={{ fontWeight: 700 }}>CLAUDE.md</h3>
+          <p className="text-gray-600 text-sm">AI-Augmented Engineering Rules</p>
         </div>
       </div>
 
       {/* Cursor rules preview */}
-      <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
+      <div className="bg-white rounded-lg border border-black/10 overflow-hidden">
         <img 
           src={cursorRulesImage} 
           alt="Cursor rules file" 
@@ -32,10 +32,10 @@ export default function CursorRulesSlide() {
         />
       </div>
 
-      <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
+      <div className="bg-[#445469]/10 border border-[#445469]/30 rounded-lg p-4">
         <div className="flex items-center gap-2">
-          <Lightbulb className="w-4 h-4 text-purple-500" />
-          <p className="text-white/90 text-sm">
+          <Lightbulb className="w-4 h-4 text-[#445469]" />
+          <p className="text-gray-700 text-sm">
             <span style={{ fontWeight: 700 }}>Tip:</span> CLAUDE.md definiuje zasady pracy z AI w tym projekcie.
             Claude Code czyta go automatycznie przy każdej sesji.
           </p>
@@ -235,7 +235,7 @@ This is AI-augmented engineering, not AI-vibe-led engineering`,
       hints={{
         step1: 'Naciśnij ↓ aby zobaczyć zasady Claude Code',
         step2: 'Naciśnij ↓ aby rozwinąć pełne zasady',
-        step3: 'Naciśnij ↓ aby wrócić do początku',
+        step3: 'Naciśnij ↓ aby przejść dalej',
       }}
     />
   );

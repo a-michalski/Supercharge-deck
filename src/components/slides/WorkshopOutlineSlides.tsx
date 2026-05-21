@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   AlertTriangle,
   ArrowRight,
@@ -72,6 +73,14 @@ const slideFrameClass = 'w-full max-w-5xl mx-auto space-y-8';
 const creamCardClass = 'border-black/15 shadow-sm p-6 h-full';
 const creamCardStyle: CSSProperties = { backgroundColor: cream };
 
+function IconBadge({ icon: Icon, color }: { icon: React.ComponentType<{ className?: string; style?: CSSProperties }>; color: string }) {
+  return (
+    <div className="p-3 rounded-xl w-fit mb-4" style={{ backgroundColor: `${color}18` }}>
+      <Icon className="w-7 h-7" style={{ color }} />
+    </div>
+  );
+}
+
 function SlideHeader({
   badge,
   title,
@@ -87,7 +96,7 @@ function SlideHeader({
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="text-left space-y-3"
+      className="text-left flex flex-col gap-10"
     >
       <h2 style={headingStyle}>
         {title}
@@ -415,68 +424,115 @@ export function AgentWorkflowSlide() {
   const steps = [
     {
       icon: ScrollText,
+      number: '01',
       title: 'Planowanie',
       text: 'Tryb plan albo plik TODO w Markdown. Agent rozpisuje kroki zanim zacznie działać.',
-      color: accentYellow,
+      color: '#FEBE42', // Yellow
+      onColor: '#000000',
     },
     {
       icon: Wrench,
+      number: '02',
       title: 'Realizacja',
       text: 'Agent wykonuje krok po kroku ustalony plan i tworzy artefakty po drodze.',
-      color: accentBlue,
+      color: '#31BFC7', // Teal
+      onColor: '#FFFFFF',
     },
     {
       icon: ClipboardCheck,
+      number: '03',
       title: 'Ocena',
       text: 'Subagent bez kontekstu rozmowy analizuje wynik według checklisty sukcesu.',
-      color: accentPink,
+      color: '#445469', // Slate Blue
+      onColor: '#FFFFFF',
     },
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
-      <SlideHeader
-        badge="SCHEMAT PRACY"
-        title="Podstawowy trójkrok z agentem"
-        subtitle="Najbezpieczniejszy proces to oddzielenie myślenia, wykonania i oceny. Każdy etap ma inną rolę."
-      />
+    <div className="w-full max-w-5xl mx-auto">
+      <div className="mb-24">
+        <SlideHeader
+          badge="SCHEMAT PRACY"
+          title="Podstawowy trójkrok z agentem"
+          subtitle="Najbezpieczniejszy proces to oddzielenie myślenia, wykonania i oceny. Każdy etap ma inną rolę."
+        />
+      </div>
 
-      <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 items-stretch">
+      <div className="grid md:grid-cols-3 gap-6 mb-12">
         {steps.map((step, idx) => {
-          const Icon = step.icon;
           return (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + idx * 0.15 }}
-              className="contents"
+              transition={{ delay: 0.2 + idx * 0.1 }}
+              className="h-full"
             >
-              <Card className="bg-white border-gray-200 shadow-md p-6 h-full">
-                <IconBadge icon={Icon} color={step.color} />
-                <div className="text-sm mt-5 mb-2" style={{ color: step.color, fontWeight: 800 }}>
-                  KROK {idx + 1}
+              <Card 
+                className="border-black/10 shadow-sm h-full flex flex-col gap-0 overflow-hidden" 
+                style={{ padding: 0, borderRadius: '12px', backgroundColor: '#EDE9E6' }}
+              >
+                {/* Header: number + title */}
+                <div
+                  className="px-6 py-6 flex items-center gap-4"
+                  style={{ backgroundColor: step.color }}
+                >
+                  <span style={{
+                    fontFamily: 'Poppins, sans-serif',
+                    fontWeight: 800,
+                    fontSize: 'clamp(22px, 2.8vw, 36px)',
+                    color: step.onColor,
+                    lineHeight: 1,
+                    flexShrink: 0,
+                  }}>
+                    {step.number}
+                  </span>
+                  <h3 style={{
+                    fontFamily: 'Poppins, sans-serif',
+                    fontWeight: 700,
+                    fontSize: 'clamp(15px, 1.7vw, 22px)',
+                    lineHeight: 1.2,
+                    color: step.onColor,
+                  }}>
+                    {step.title}
+                  </h3>
                 </div>
-                <h3 className="text-2xl text-black mb-3" style={{ fontWeight: 700 }}>
-                  {step.title}
-                </h3>
-                <p className="text-gray-700">{step.text}</p>
+
+                {/* Content: description only */}
+                <div className="px-6 py-8 flex-grow">
+                  <p style={{
+                    fontFamily: 'Poppins, sans-serif',
+                    fontWeight: 400,
+                    fontSize: 'clamp(10px, 1.2vw, 15px)',
+                    color: '#333233',
+                    lineHeight: 1.55,
+                  }}>
+                    {step.text}
+                  </p>
+                </div>
               </Card>
-              {idx < steps.length - 1 && (
-                <div className="hidden md:flex items-center justify-center">
-                  <ArrowRight className="w-7 h-7 text-gray-300" />
-                </div>
-              )}
             </motion.div>
           );
         })}
       </div>
 
-      <HighlightCard>
-        <p className="text-lg text-black" style={{ fontWeight: 400 }}>
-          Subagent dostaje tylko to, co musi mieć. Oszczędza tokeny i daje bardziej krytyczny feedback.
-        </p>
-      </HighlightCard>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+        style={{
+          fontFamily: 'Poppins, sans-serif',
+          fontWeight: 400,
+          fontSize: 'clamp(11px, 1.5vw, 19px)', // 18pt
+          color: '#000000',
+          textAlign: 'center',
+          maxWidth: '850px',
+          margin: '0 auto',
+          lineHeight: 1.6,
+        }}
+      >
+        Subagent dostaje tylko to, co musi mieć. Oszczędza tokeny i daje bardziej krytyczny feedback.
+      </motion.p>
     </div>
   );
 }
@@ -504,7 +560,7 @@ export function DeterministicVerificationSlide() {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       <SlideHeader
         badge="WERYFIKACJA"
         title="Dwa tryby użycia AI"
@@ -522,7 +578,7 @@ export function DeterministicVerificationSlide() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 + idx * 0.12 }}
             >
-              <Card className="bg-white border-gray-200 shadow-md p-7 h-full">
+              <Card className="bg-[#EDE9E6] border-0 shadow-none p-7 h-full">
                 <div className="flex items-start gap-4">
                   <IconBadge icon={Icon} color={mode.color} />
                   <div>
@@ -570,7 +626,7 @@ export function FigmaMcpIntroSlide() {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       <SlideHeader
         badge="NARZĘDZIE"
         title="Figma MCP - co to jest i po co?"
@@ -580,7 +636,7 @@ export function FigmaMcpIntroSlide() {
 
       <div className="grid lg:grid-cols-[360px_1fr] gap-8 items-stretch">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-          <Card className="bg-gradient-to-br from-[#FF438B]/10 to-white border-[#FF438B]/30 shadow-md p-8 h-full flex flex-col justify-center items-center text-center">
+          <Card className="bg-gradient-to-br from-[#EA148C]/10 to-[#EDE9E6] border-[#EA148C]/30 shadow-md p-8 h-full flex flex-col justify-center items-center text-center">
             <div className="p-6 rounded-2xl mb-5" style={{ backgroundColor: `${accentPink}18` }}>
               <Figma className="w-20 h-20" style={{ color: accentPink }} />
             </div>
@@ -599,7 +655,7 @@ export function FigmaMcpIntroSlide() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 + idx * 0.1 }}
             >
-              <Card className="bg-white border-gray-200 shadow-sm p-5">
+              <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-5">
                 <div className="flex gap-4">
                   <CheckCircle2 className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: accentPink }} />
                   <p className="text-gray-700">{feature}</p>
@@ -623,7 +679,7 @@ export function FigmaMcpInstallSlide() {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       <SlideHeader
         badge="KONFIGURACJA"
         title="Instalacja Figma MCP w Claude Code"
@@ -633,7 +689,7 @@ export function FigmaMcpInstallSlide() {
 
       <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-6">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-          <Card className="bg-white border-gray-200 shadow-md p-6 h-full">
+          <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-6 h-full">
             <div className="flex items-center gap-3 mb-5">
               <IconBadge icon={ClipboardCheck} color={accentCyan} />
               <h3 className="text-2xl text-black" style={{ fontWeight: 700 }}>
@@ -652,7 +708,7 @@ export function FigmaMcpInstallSlide() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}>
-          <Card className="bg-white border-gray-200 shadow-md p-6 h-full">
+          <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-6 h-full">
             <div className="flex items-center gap-3 mb-5">
               <IconBadge icon={Terminal} color={accentYellow} />
               <h3 className="text-2xl text-black" style={{ fontWeight: 700 }}>
@@ -660,8 +716,8 @@ export function FigmaMcpInstallSlide() {
               </h3>
             </div>
 
-            <div className="bg-[#1E1E1E] rounded-lg p-4 mb-5 border border-black">
-              <p className="font-mono text-sm text-[#F5C57C]">claude plugin install figma@claude-plugins-official</p>
+            <div className="rounded-lg p-4 mb-5" style={{ backgroundColor: '#1E1E1E' }}>
+              <p className="font-mono text-sm" style={{ color: '#F5C57C' }}>claude plugin install figma@claude-plugins-official</p>
             </div>
 
             <div className="space-y-3">
@@ -678,7 +734,7 @@ export function FigmaMcpInstallSlide() {
         </motion.div>
       </div>
 
-      <Card className="bg-[#FF438B]/10 border-[#FF438B]/30 p-5">
+      <Card className="bg-[#EA148C]/10 border-[#EA148C]/30 p-5">
         <div className="flex gap-3">
           <AlertTriangle className="w-6 h-6 flex-shrink-0" style={{ color: accentPink }} />
           <p className="text-gray-800">
@@ -734,7 +790,7 @@ export function FigmaMcpToolsSlide() {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-6 space-y-8">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       <SlideHeader
         badge="PRZEGLĄD NARZĘDZI"
         title="Co oferuje Figma MCP?"
@@ -752,7 +808,7 @@ export function FigmaMcpToolsSlide() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + idx * 0.08 }}
             >
-              <Card className="bg-white border-gray-200 shadow-md p-6 h-full">
+              <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-6 h-full">
                 <div className="flex items-center gap-3 mb-5">
                   <IconBadge icon={Icon} color={group.color} />
                   <h3 className="text-2xl text-black" style={{ fontWeight: 800 }}>
@@ -791,7 +847,7 @@ export function FoundationsPainSlide() {
   ] as const;
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-6 space-y-8">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       <SlideHeader
         badge="PAIN: FOUNDATIONS"
         title="AI zmienia kolor przycisku. Ale tylko w jednym miejscu."
@@ -799,7 +855,7 @@ export function FoundationsPainSlide() {
         color={accentYellow}
       />
 
-      <Card className="bg-[#FF438B]/10 border-[#FF438B]/30 p-6">
+      <Card className="bg-[#EA148C]/10 border-[#EA148C]/30 p-6">
         <div className="flex gap-4">
           <XCircle className="w-7 h-7 flex-shrink-0" style={{ color: accentPink }} />
           <p className="text-lg text-gray-800">
@@ -820,7 +876,7 @@ export function FoundationsPainSlide() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + idx * 0.05 }}
             >
-              <Card className="bg-white border-gray-200 shadow-sm p-4 h-full">
+              <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-4 h-full">
                 <Icon className="w-6 h-6 mb-3" style={{ color }} />
                 <h4 className="text-black mb-2" style={{ fontWeight: 800 }}>
                   {title}
@@ -845,7 +901,7 @@ export function AtomicDesignPainSlide() {
   ] as const;
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-6 space-y-8">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       <SlideHeader
         badge="PAIN: ATOMIC DESIGN"
         title="Agent buduje ten sam przycisk po raz piąty. Trochę inaczej."
@@ -853,7 +909,7 @@ export function AtomicDesignPainSlide() {
         color={accentCyan}
       />
 
-      <Card className="bg-[#FF438B]/10 border-[#FF438B]/30 p-6">
+      <Card className="bg-[#EA148C]/10 border-[#EA148C]/30 p-6">
         <div className="flex gap-4">
           <AlertTriangle className="w-7 h-7 flex-shrink-0" style={{ color: accentPink }} />
           <p className="text-lg text-gray-800">
@@ -873,7 +929,7 @@ export function AtomicDesignPainSlide() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 + idx * 0.08 }}
           >
-            <Card className="bg-white border-gray-200 shadow-sm p-4">
+            <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-4">
               <div className="grid md:grid-cols-[160px_1fr] gap-4 items-center">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${color}25` }}>

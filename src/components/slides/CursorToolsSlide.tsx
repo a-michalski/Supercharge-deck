@@ -10,7 +10,7 @@ export default function CursorToolsSlide() {
       desc: 'Autouzupełnianie na sterydach',
       details: 'Piszesz kod, AI sugeruje. Ty akceptujesz lub ignorujesz.',
       use: 'Szybkie kodowanie gdy wiesz co robisz',
-      color: '#46BAD8'
+      color: '#445469'
     },
     {
       icon: Settings,
@@ -26,7 +26,7 @@ export default function CursorToolsSlide() {
       desc: 'AI dostaje autonomię',
       details: 'Może czytać pliki, uruchamiać komendy, wprowadzać zmiany.',
       use: 'Potężne, ale wymaga zaufania i dobrych reguł',
-      color: '#FF438B'
+      color: '#EA148C'
     }
   ];
 
@@ -37,7 +37,7 @@ export default function CursorToolsSlide() {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export default function CursorToolsSlide() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + idx * 0.15 }}
             >
-              <Card className="bg-white border-gray-200 shadow-md p-6 h-full hover:shadow-lg transition-shadow">
+              <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-6 h-full hover:shadow-lg transition-shadow">
                 <div className="p-3 rounded-lg w-fit mb-4" style={{ backgroundColor: `${mode.color}20` }}>
                   <Icon className="w-8 h-8" style={{ color: mode.color }} />
                 </div>
@@ -81,7 +81,7 @@ export default function CursorToolsSlide() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <Card className="bg-white border-gray-200 shadow-md p-6">
+          <Card className="bg-[#EDE9E6] border-black/15 shadow-sm p-6">
             <div className="flex items-center gap-3 mb-4">
               <Cpu className="w-6 h-6 text-black" />
               <h3 className="text-xl text-black" style={{ fontWeight: 700 }}>Modele AI</h3>
@@ -108,7 +108,7 @@ export default function CursorToolsSlide() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.9 }}
         >
-          <Card className="bg-gradient-to-br from-[#FEBE42]/20 to-[#FFBF42]/20 border-[#FEBE42]/30 shadow-md p-6">
+          <Card className="bg-gradient-to-br from-[#FEBE42]/20 to-[#FEBE42]/20 border-[#FEBE42]/30 shadow-md p-6">
             <div className="flex items-center gap-3 mb-4">
               <Settings className="w-6 h-6 text-black" />
               <h3 className="text-xl text-black" style={{ fontWeight: 700 }}>RULES - Reguły</h3>
