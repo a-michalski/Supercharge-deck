@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 import { Linkedin, Globe, BookOpen, Github, Heart, ExternalLink } from 'lucide-react';
 
 export default function ThanksSlide() {
@@ -40,9 +39,6 @@ export default function ThanksSlide() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-4"
         >
-          <Badge className="bg-[#FEBE42] text-black border-[#FEBE42] mb-4">
-            DZIĘKUJĘ
-          </Badge>
           <h1 className="text-6xl text-black" style={{ fontWeight: 800 }}>
             Dziękuję za uwagę!
           </h1>

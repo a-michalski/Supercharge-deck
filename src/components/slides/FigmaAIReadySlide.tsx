@@ -1,7 +1,6 @@
 import { CheckCircle2, Variable, Component, Tag, Layout, FileText, XCircle, Lightbulb } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function FigmaAIReadySlide() {
   const features = [
@@ -44,9 +43,6 @@ export default function FigmaAIReadySlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#1976D2] text-white border-[#1976D2]">
-          CZĘŚĆ 4: Przygotowanie designu
-        </Badge>
         <h2 className="text-5xl text-black" style={{ fontWeight: 800 }}>
           Przygotuj Figmę dla AI
         </h2>

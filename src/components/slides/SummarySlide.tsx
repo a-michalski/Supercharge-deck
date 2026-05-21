@@ -1,7 +1,6 @@
 import { GitBranch, Save, ListChecks, Eye, FileCode, Route, RotateCcw, Lightbulb } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function SummarySlide() {
   const keyTakeaways = [
@@ -40,7 +39,7 @@ export default function SummarySlide() {
     {
       icon: FileCode,
       number: '5',
-      title: 'Użyj .cursorrules',
+      title: 'Użyj CLAUDE.md',
       desc: 'To instrukcja obsługi Twojego projektu dla AI.',
       highlight: 'Bez tego - chaos.',
       color: '#FEBE42'
@@ -70,9 +69,6 @@ export default function SummarySlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          PODSUMOWANIE
-        </Badge>
         <h2 className="text-5xl text-black" style={{ fontWeight: 800 }}>
           Najważniejsze zasady
         </h2>

@@ -1,7 +1,6 @@
 import { Figma, BookOpen, Boxes, Target } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function McpSetupSlide() {
   return (
@@ -11,9 +10,6 @@ export default function McpSetupSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#31BFC7] text-white border-[#31BFC7]">
-          CZĘŚĆ 2: Setup środowiska
-        </Badge>
         <h2 className="text-4xl text-black" style={{ fontWeight: 800 }}>
           MCP + Kontekst dla AI
         </h2>

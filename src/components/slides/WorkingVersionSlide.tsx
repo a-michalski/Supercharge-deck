@@ -1,7 +1,6 @@
 import { ExternalLink, FolderOpen, FileCode, Layout } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 
 export default function WorkingVersionSlide() {
@@ -41,9 +40,6 @@ export default function WorkingVersionSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          DEMO
-        </Badge>
         <h2 className="text-5xl text-black" style={{ fontWeight: 800 }}>
           Działająca wersja
         </h2>

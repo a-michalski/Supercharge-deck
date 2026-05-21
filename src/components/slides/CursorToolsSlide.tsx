@@ -1,7 +1,6 @@
 import { Cpu, FileCode, Bot, Settings } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function CursorToolsSlide() {
   const modes = [
@@ -32,9 +31,9 @@ export default function CursorToolsSlide() {
   ];
 
   const models = [
-    { name: 'Sonnet 4.5 (Claude)', note: 'Dobry w rozumowaniu - używany dzisiaj' },
-    { name: 'GPT-4', note: 'Szybki i wszechstronny' },
-    { name: 'Auto Mode', note: 'Przełącza między modelami automatycznie' }
+    { name: 'claude-sonnet-4-6', note: 'Codzienna praca — szybki i bardzo dokładny' },
+    { name: 'claude-opus-4-7', note: 'Złożone zadania, architektura, refactoring' },
+    { name: 'claude-haiku-4-5', note: 'Szybkie zadania, małe poprawki' }
   ];
 
   return (
@@ -44,11 +43,8 @@ export default function CursorToolsSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#31BFC7] text-white border-[#31BFC7]">
-          CZĘŚĆ 2: Narzędzia
-        </Badge>
         <h2 className="text-4xl text-black" style={{ fontWeight: 800 }}>
-          Cursor - Tryby pracy z AI
+          VS Code + Claude Code — Tryby pracy z AI
         </h2>
       </motion.div>
 
@@ -123,15 +119,17 @@ export default function CursorToolsSlide() {
             <ul className="space-y-2 mb-4">
               <li className="flex items-center gap-2">
                 <span className="text-[#FEBE42]" style={{ fontWeight: 700 }}>•</span>
-                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-black border border-gray-200">.cursorrules</code>
+                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-black border border-gray-200">CLAUDE.md</code>
+                <span className="text-xs text-gray-500">projekt</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-[#FEBE42]" style={{ fontWeight: 700 }}>•</span>
-                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-black border border-gray-200">claude.md</code>
+                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-black border border-gray-200">~/.claude/CLAUDE.md</code>
+                <span className="text-xs text-gray-500">globalne</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-[#FEBE42]" style={{ fontWeight: 700 }}>•</span>
-                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-black border border-gray-200">agents.md</code>
+                <code className="bg-gray-100 px-2 py-1 rounded text-sm text-black border border-gray-200">.claude/settings.json</code>
               </li>
             </ul>
             <p className="text-gray-700 text-sm">

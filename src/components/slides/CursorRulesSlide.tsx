@@ -18,7 +18,7 @@ export default function CursorRulesSlide() {
           </svg>
         </div>
         <div>
-          <h3 className="text-white" style={{ fontWeight: 700 }}>.cursorrules</h3>
+          <h3 className="text-white" style={{ fontWeight: 700 }}>CLAUDE.md</h3>
           <p className="text-white/60 text-sm">AI-Augmented Engineering Rules</p>
         </div>
       </div>
@@ -36,8 +36,8 @@ export default function CursorRulesSlide() {
         <div className="flex items-center gap-2">
           <Lightbulb className="w-4 h-4 text-purple-500" />
           <p className="text-white/90 text-sm">
-            <span style={{ fontWeight: 700 }}>Tip:</span> Plik .cursorrules definiuje zasady pracy z AI. 
-            AI zawsze planuje przed kodowaniem i dokumentuje zmiany.
+            <span style={{ fontWeight: 700 }}>Tip:</span> CLAUDE.md definiuje zasady pracy z AI w tym projekcie.
+            Claude Code czyta go automatycznie przy każdej sesji.
           </p>
         </div>
       </div>
@@ -227,13 +227,13 @@ This is AI-augmented engineering, not AI-vibe-led engineering`,
     <ContentToDocumentSlide
       sectionBadge="CZĘŚĆ 2: Konfiguracja"
       badgeColor="#31BFC7"
-      title="Cursor Rules"
+      title="CLAUDE.md"
       subtitle="Zasady pracy z AI"
       leftContent={leftContent}
-      documentTitle=".cursorrules"
+      documentTitle="CLAUDE.md"
       documentContent={documentContent}
       hints={{
-        step1: 'Naciśnij ↓ aby zobaczyć zasady Cursor',
+        step1: 'Naciśnij ↓ aby zobaczyć zasady Claude Code',
         step2: 'Naciśnij ↓ aby rozwinąć pełne zasady',
         step3: 'Naciśnij ↓ aby wrócić do początku',
       }}

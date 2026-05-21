@@ -1,7 +1,6 @@
-import { Sparkles, X, CheckCircle, Film, Lightbulb } from 'lucide-react';
+import { Sparkles, X, CheckCircle, Lightbulb } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function IntroSlide() {
   const topics = [
@@ -26,12 +25,6 @@ export default function IntroSlide() {
         transition={{ duration: 0.6 }}
         className="text-center space-y-4"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42] mb-4">
-          <div className="flex items-center gap-2">
-            <Film className="w-4 h-4" />
-            <span>INTRO</span>
-          </div>
-        </Badge>
         <h1 className="text-5xl text-black" style={{ fontWeight: 800 }}>
           Warsztat: Kodowanie z AI
         </h1>

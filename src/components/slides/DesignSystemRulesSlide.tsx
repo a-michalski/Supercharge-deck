@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Badge } from '../ui/badge';
 import BottomHint from './shared/BottomHint';
 
 interface TerminalLine {
@@ -329,9 +328,6 @@ This project uses a **flat + colocation** approach for maximum simplicity and ma
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
-        <Badge className="bg-[#1976D2] text-white border-[#1976D2] mb-4">
-          CZĘŚĆ 4: Automatyzacja
-        </Badge>
         <h2 className="text-4xl text-black mb-2" style={{ fontWeight: 800 }}>
           Automatyczne generowanie Guidelines.md
         </h2>

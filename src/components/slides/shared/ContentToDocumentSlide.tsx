@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Badge } from '../../ui/badge';
 import { Copy, Check } from 'lucide-react';
 import { toast } from 'sonner@2.0.3';
 import BottomHint from './BottomHint';
@@ -211,9 +210,6 @@ export default function ContentToDocumentSlide({
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
-        <Badge className="text-white border-0 mb-4" style={{ backgroundColor: badgeColor }}>
-          {sectionBadge}
-        </Badge>
         <h2 className="text-4xl text-black mb-2" style={{ fontWeight: 800 }}>
           {title}
         </h2>

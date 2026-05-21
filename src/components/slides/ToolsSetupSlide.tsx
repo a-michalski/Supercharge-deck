@@ -1,7 +1,6 @@
 import { Code, Shield, AlertTriangle, Target } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function ToolsSetupSlide() {
   const toolCategories = [
@@ -76,9 +75,6 @@ export default function ToolsSetupSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          CZĘŚĆ 1: Setup
-        </Badge>
         <h2 className="text-4xl text-black" style={{ fontWeight: 800 }}>
           Narzędzia + Konfiguracja
         </h2>

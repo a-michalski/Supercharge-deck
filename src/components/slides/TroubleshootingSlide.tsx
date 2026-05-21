@@ -1,7 +1,6 @@
 import { RotateCcw, BookOpen, GitBranch, MessageSquare, CheckCircle, Search } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function TroubleshootingSlide() {
   const techniques = [
@@ -44,9 +43,6 @@ export default function TroubleshootingSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          TROUBLESHOOTING
-        </Badge>
         <h2 className="text-5xl text-black" style={{ fontWeight: 800 }}>
           Rozwiązywanie problemów
         </h2>

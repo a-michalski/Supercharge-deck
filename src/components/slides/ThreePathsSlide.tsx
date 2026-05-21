@@ -1,7 +1,6 @@
 import { Code, Image, Figma, Lightbulb } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function ThreePathsSlide() {
   const paths = [
@@ -52,9 +51,6 @@ export default function ThreePathsSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#9333EA] text-white border-[#9333EA]">
-          CZĘŚĆ 3: Strategie kodowania
-        </Badge>
         <h2 className="text-4xl text-black" style={{ fontWeight: 800 }}>
           Trzy ścieżki kodowania z AI
         </h2>

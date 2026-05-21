@@ -1,7 +1,6 @@
 import { Zap, Target } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function VibeCodingSlide() {
   const vibeCoding = {
@@ -18,7 +17,7 @@ export default function VibeCodingSlide() {
     title: 'Asistent Design',
     icon: Target,
     color: '#31BFC7',
-    description: 'Eksploracja z planem. Pełny kontekst + reguły (Cursor rules, PRD) → AI wykonuje precyzyjnie.',
+    description: 'Eksploracja z planem. Pełny kontekst + reguły (CLAUDE.md, PRD) → AI wykonuje precyzyjnie.',
     scope: 'Większe zmiany wraz z flow',
     when: 'Produkcja, scale, zespoły (80%+ wizji)',
     benefit: '20-50x przyspieszenie, mały tech debt'
@@ -31,9 +30,6 @@ export default function VibeCodingSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          CZĘŚĆ 1: Filozofia pracy
-        </Badge>
         <h2 className="text-4xl text-black" style={{ fontWeight: 800 }}>
           Dwa podejścia do kodowania z AI
         </h2>

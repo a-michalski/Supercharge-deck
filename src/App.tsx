@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Users, Clock, Code, GitBranch, Lightbulb, MessageSquare, Presentation, Sparkles, Settings, Route, Shield, Trophy, HelpCircle, Maximize2, Minimize2, User, FileCode, BookOpen, Zap, Box, Layers, Play, AlertTriangle, FileText, Edit, Heart, MoreHorizontal } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Users, Clock, Code, Lightbulb, MessageSquare, Presentation, Sparkles, Settings, Route, Shield, Trophy, HelpCircle, Maximize2, Minimize2, User, FileCode, BookOpen, Zap, Box, Layers, Play, AlertTriangle, FileText, Edit, Heart, MoreHorizontal, Brain, Database, FileCheck2, Figma, Wrench, History } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from './components/ui/button';
 import { Badge } from './components/ui/badge';
@@ -11,8 +11,6 @@ import TitleSlide from './components/slides/TitleSlide';
 import AboutSlide from './components/slides/AboutSlide';
 import VibeCodingSlide from './components/slides/VibeCodingSlide';
 import ToolsSetupSlide from './components/slides/ToolsSetupSlide';
-import GitManagementSlide from './components/slides/GitManagementSlide';
-import GitConfigSlide from './components/slides/GitConfigSlide';
 import CursorToolsSlide from './components/slides/CursorToolsSlide';
 import McpSetupSlide from './components/slides/McpSetupSlide';
 import DesignSystemRulesSlide from './components/slides/DesignSystemRulesSlide';
@@ -29,31 +27,63 @@ import WorkingVersionSlide from './components/slides/WorkingVersionSlide';
 import TroubleshootingSlide from './components/slides/TroubleshootingSlide';
 import CursorRulesSlide from './components/slides/CursorRulesSlide';
 import ThanksSlide from './components/slides/ThanksSlide';
+import AIArchitectureSlide from './components/slides/AIArchitectureSlide';
+import {
+  AgentWorkflowSlide,
+  AIMindsetSlide,
+  AtomicDesignPainSlide,
+  ContextManagementSlide,
+  DeterministicVerificationSlide,
+  FigmaMcpInstallSlide,
+  FigmaMcpIntroSlide,
+  FigmaMcpToolsSlide,
+  FoundationsPainSlide,
+  ModelContextPackageSlide,
+  WorkshopWelcomeSlide,
+} from './components/slides/WorkshopOutlineSlides';
 
 const slides = [
   { id: 0, title: 'Strona tytułowa', component: TitleSlide, duration: '1 min', icon: Presentation },
   { id: 1, title: 'O mnie', component: AboutSlide, duration: '2 min', icon: User },
-  { id: 2, title: 'Vibe coding vs Asistent design', component: VibeCodingSlide, duration: '2 min', icon: Lightbulb },
-  { id: 3, title: 'Narzędzia + Setup', component: ToolsSetupSlide, duration: '2 min', icon: Code },
-  { id: 4, title: 'GIT i zarządzanie wersjami', component: GitManagementSlide, duration: '3 min', icon: GitBranch },
-  { id: 5, title: 'GIT konfiguracja', component: GitConfigSlide, duration: '2 min', icon: Settings },
-  { id: 6, title: 'Cursor - narzędzia', component: CursorToolsSlide, duration: '3 min', icon: Sparkles },
-  { id: 7, title: 'Cursor Rules', component: CursorRulesSlide, duration: '3 min', icon: FileText },
-  { id: 8, title: 'MCP + Setup środowiska', component: McpSetupSlide, duration: '2 min', icon: Settings },
-  { id: 9, title: 'Kluczowe zasady', component: KeyPrinciplesSlide, duration: '2 min', icon: Shield },
-  { id: 10, title: 'Zasady promptowania', component: PromptingRulesSlide, duration: '2 min', icon: MessageSquare },
-  { id: 11, title: 'Przykład promptowania', component: PromptingExampleSlide, duration: '2 min', icon: Edit },
-  { id: 12, title: 'Trzy ścieżki kodowania', component: ThreePathsSlide, duration: '2 min', icon: Route },
-  { id: 13, title: 'Make Figma AI-ready', component: FigmaAIReadySlide, duration: '2 min', icon: Layers },
-  { id: 14, title: 'Automatyczne Guidelines.md', component: DesignSystemRulesSlide, duration: '2 min', icon: FileCode },
-  { id: 15, title: 'Ekstrakcja tokenów', component: ExtractTokensSlide, duration: '2 min', icon: BookOpen },
-  { id: 16, title: 'Start Fresh', component: StartFreshSlide, duration: '2 min', icon: Zap },
-  { id: 17, title: 'Component Migration', component: ComponentMigrationSlide, duration: '2 min', icon: Box },
-  { id: 18, title: 'Working version', component: WorkingVersionSlide, duration: '2 min', icon: Play },
-  { id: 19, title: 'Troubleshooting', component: TroubleshootingSlide, duration: '3 min', icon: AlertTriangle },
-  { id: 20, title: 'Najważniejsze zasady', component: SummarySlide, duration: '5 min', icon: Trophy },
-  { id: 21, title: 'Dziękuję', component: ThanksSlide, duration: '1 min', icon: Heart },
+  { id: 2, title: 'Powitanie', component: WorkshopWelcomeSlide, duration: '2 min', icon: Presentation },
+  { id: 3, title: 'Ramka nastawienia', component: AIMindsetSlide, duration: '2 min', icon: Brain },
+  { id: 4, title: 'Jak działają narzędzia AI', component: AIArchitectureSlide, duration: '2 min', icon: Layers },
+  { id: 5, title: 'Kontekst: pakiet modelu', component: ModelContextPackageSlide, duration: '2 min', icon: Database },
+  { id: 6, title: 'Zarządzanie kontekstem', component: ContextManagementSlide, duration: '2 min', icon: History },
+  { id: 7, title: 'Schemat pracy z agentem', component: AgentWorkflowSlide, duration: '3 min', icon: Route },
+  { id: 8, title: 'Weryfikacja deterministyczna', component: DeterministicVerificationSlide, duration: '3 min', icon: FileCheck2 },
+  { id: 9, title: 'Figma MCP', component: FigmaMcpIntroSlide, duration: '2 min', icon: Figma },
+  { id: 10, title: 'Instalacja Figma MCP', component: FigmaMcpInstallSlide, duration: '3 min', icon: Settings },
+  { id: 11, title: 'Narzędzia Figma MCP', component: FigmaMcpToolsSlide, duration: '4 min', icon: Wrench },
+  { id: 12, title: 'Pain: Foundations', component: FoundationsPainSlide, duration: '3 min', icon: Layers },
+  { id: 13, title: 'Pain: Atomic Design', component: AtomicDesignPainSlide, duration: '3 min', icon: Box },
+  { id: 14, title: 'Vibe coding vs Asistent design', component: VibeCodingSlide, duration: '2 min', icon: Lightbulb },
+  { id: 15, title: 'Narzędzia + Setup', component: ToolsSetupSlide, duration: '2 min', icon: Code },
+  { id: 16, title: 'VS Code + Claude Code', component: CursorToolsSlide, duration: '3 min', icon: Sparkles },
+  { id: 17, title: 'CLAUDE.md', component: CursorRulesSlide, duration: '3 min', icon: FileText },
+  { id: 18, title: 'MCP + Setup środowiska', component: McpSetupSlide, duration: '2 min', icon: Settings },
+  { id: 19, title: 'Kluczowe zasady', component: KeyPrinciplesSlide, duration: '2 min', icon: Shield },
+  { id: 20, title: 'Zasady promptowania', component: PromptingRulesSlide, duration: '2 min', icon: MessageSquare },
+  { id: 21, title: 'Przykład promptowania', component: PromptingExampleSlide, duration: '2 min', icon: Edit },
+  { id: 22, title: 'Trzy ścieżki kodowania', component: ThreePathsSlide, duration: '2 min', icon: Route },
+  { id: 23, title: 'Make Figma AI-ready', component: FigmaAIReadySlide, duration: '2 min', icon: Layers },
+  { id: 24, title: 'Automatyczne Guidelines.md', component: DesignSystemRulesSlide, duration: '2 min', icon: FileCode },
+  { id: 25, title: 'Ekstrakcja tokenów', component: ExtractTokensSlide, duration: '2 min', icon: BookOpen },
+  { id: 26, title: 'Start Fresh', component: StartFreshSlide, duration: '2 min', icon: Zap },
+  { id: 27, title: 'Component Migration', component: ComponentMigrationSlide, duration: '2 min', icon: Box },
+  { id: 28, title: 'Working version', component: WorkingVersionSlide, duration: '2 min', icon: Play },
+  { id: 29, title: 'Troubleshooting', component: TroubleshootingSlide, duration: '3 min', icon: AlertTriangle },
+  { id: 30, title: 'Najważniejsze zasady', component: SummarySlide, duration: '5 min', icon: Trophy },
+  { id: 31, title: 'Dziękuję', component: ThanksSlide, duration: '1 min', icon: Heart },
 ];
+
+const arrowDownHandledSlides = new Set([
+  PromptingExampleSlide,
+  DesignSystemRulesSlide,
+  ExtractTokensSlide,
+  StartFreshSlide,
+  ComponentMigrationSlide,
+]);
 
 export default function App() {
   const posthog = usePostHog();
@@ -204,45 +234,7 @@ export default function App() {
         return;
       }
 
-      // GitManagementSlide (index 4) handles its own ↑↓ navigation
-      if (currentSlide === 4 && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
-        // Don't handle - let GitManagementSlide handle it
-        return;
-      }
-
-      // GitConfigSlide (index 5) handles its own ↑↓ navigation
-      if (currentSlide === 5 && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
-        // Don't handle - let GitConfigSlide handle it
-        return;
-      }
-
-      // PromptingExampleSlide (index 11) handles its own ↓ navigation
-      if (currentSlide === 11 && event.key === 'ArrowDown') {
-        // Don't handle - let PromptingExampleSlide handle it
-        return;
-      }
-
-      // DesignSystemRulesSlide (index 14) handles its own ↓ navigation
-      if (currentSlide === 14 && event.key === 'ArrowDown') {
-        // Don't handle - let DesignSystemRulesSlide handle it
-        return;
-      }
-
-      // ExtractTokensSlide (index 15) handles its own ↓ navigation
-      if (currentSlide === 15 && event.key === 'ArrowDown') {
-        // Don't handle - let ExtractTokensSlide handle it
-        return;
-      }
-
-      // StartFreshSlide (index 16) handles its own ↓ navigation
-      if (currentSlide === 16 && event.key === 'ArrowDown') {
-        // Don't handle - let StartFreshSlide handle it
-        return;
-      }
-
-      // ComponentMigrationSlide (index 17) handles its own ↓ navigation
-      if (currentSlide === 17 && event.key === 'ArrowDown') {
-        // Don't handle - let ComponentMigrationSlide handle it
+      if (event.key === 'ArrowDown' && arrowDownHandledSlides.has(slides[currentSlide].component)) {
         return;
       }
       
@@ -457,8 +449,7 @@ export default function App() {
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-lg" style={{ fontWeight: 600 }}>Ulepszanie prototypu</h1>
-                  <p className="text-sm text-gray-600">vibe design, vibe coding</p>
+                  <h1 className="text-lg" style={{ fontWeight: 600 }}>Budowanie z AI bez pisania kodu</h1>
                 </div>
                 <div className="flex items-center gap-4">
                   <Badge 
@@ -560,7 +551,7 @@ export default function App() {
 
                 <div className="flex gap-2 max-w-xl justify-center items-center">
                   {getVisibleSlides(currentSlide).showLeftDots && (
-                    <Popover>
+                    <Popover open={showAllSlidesPopover} onOpenChange={setShowAllSlidesPopover}>
                       <PopoverTrigger asChild>
                         <button
                           type="button"
@@ -585,7 +576,10 @@ export default function App() {
                                 <button
                                   key={slide.id}
                                   type="button"
-                                  onClick={() => goToSlide(index)}
+                                  onClick={() => {
+                                    goToSlide(index);
+                                    setShowAllSlidesPopover(false);
+                                  }}
                                   className={`p-3 rounded-lg transition-all flex flex-col items-center gap-1 ${
                                     index === currentSlide
                                       ? 'bg-[#FEBE42] text-black shadow-md'
@@ -629,7 +623,7 @@ export default function App() {
                   })}
                   
                   {getVisibleSlides(currentSlide).showRightDots && (
-                    <Popover>
+                    <Popover open={showAllSlidesPopover} onOpenChange={setShowAllSlidesPopover}>
                       <PopoverTrigger asChild>
                         <button
                           type="button"
@@ -654,7 +648,10 @@ export default function App() {
                                 <button
                                   key={slide.id}
                                   type="button"
-                                  onClick={() => goToSlide(index)}
+                                  onClick={() => {
+                                    goToSlide(index);
+                                    setShowAllSlidesPopover(false);
+                                  }}
                                   className={`p-3 rounded-lg transition-all flex flex-col items-center gap-1 ${
                                     index === currentSlide
                                       ? 'bg-[#FEBE42] text-black shadow-md'

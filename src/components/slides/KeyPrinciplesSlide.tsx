@@ -1,7 +1,6 @@
 import { Eye, ListChecks, ShieldCheck, RotateCcw, Target } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 
 export default function KeyPrinciplesSlide() {
   const principles = [
@@ -63,9 +62,6 @@ export default function KeyPrinciplesSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#9333EA] text-white border-[#9333EA]">
-          CZĘŚĆ 3: Zasady pracy
-        </Badge>
         <h2 className="text-4xl text-black" style={{ fontWeight: 800 }}>
           Kluczowe zasady pracy z AI
         </h2>
@@ -83,8 +79,8 @@ export default function KeyPrinciplesSlide() {
               transition={{ delay: 0.2 + idx * 0.15 }}
             >
               <Card className={`${
-                principle.highlight 
-                  ? 'bg-gradient-to-br from-[#FEBE42]/20 to-[#FFBF42]/20 border-[#FEBE42] ring-2 ring-[#FEBE42]/50 shadow-lg' 
+                principle.highlight
+                  ? 'bg-gradient-to-br from-[#FEBE42]/20 to-[#FFBF42]/20 border-[#FEBE42] ring-2 ring-[#FEBE42]/50 shadow-lg'
                   : 'bg-white border-gray-200 shadow-md'
               } p-6 h-full hover:shadow-lg transition-shadow`}>
                 <div className="flex items-start gap-4 mb-4">

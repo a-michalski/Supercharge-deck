@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 const adamPhoto = '/assets/03ca683580a888301b569a817e4dda00b79dc8fa.png';
 const arrowsImage = '/assets/3e2f7fab03a615e9691c6b8e7c871de6689b9e8c.png';
-import { Badge } from '../ui/badge';
 
 export default function TitleSlide() {
   return (
@@ -31,11 +30,8 @@ export default function TitleSlide() {
           className="z-10 max-w-lg mt-5"
         >
           <h1 className="text-4xl text-black mb-3 leading-tight" style={{ fontWeight: 800 }}>
-            Ulepszanie prototypu
+            Budowanie z AI bez pisania kodu
           </h1>
-          <h2 className="text-2xl text-black mb-6 leading-tight" style={{ fontWeight: 800 }}>
-            (vibe design, vibe coding)
-          </h2>
           
           <p className="text-lg text-black/90 mb-8" style={{ fontWeight: 600 }}>
             Buduj produkty dzięki AI, zamiast<br />
@@ -96,7 +92,7 @@ export default function TitleSlide() {
               Adam Michalski
             </p>
             <p className="text-lg text-black/90" style={{ fontWeight: 600 }}>
-              13 listopada
+              21.05
             </p>
           </div>
         </motion.div>

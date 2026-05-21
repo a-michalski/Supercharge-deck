@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { MessageCircle, HelpCircle, ChevronUp, ChevronDown, Rocket, Sparkles, Mail, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 export default function QASlide() {
@@ -76,9 +75,6 @@ export default function QASlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          Q&A - 30 minut
-        </Badge>
         <h2 className="text-5xl text-black" style={{ fontWeight: 800 }}>
           Pytania i odpowiedzi
         </h2>
@@ -119,9 +115,6 @@ export default function QASlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          Q&A - 30 minut
-        </Badge>
         <h2 className="text-5xl text-black flex items-center justify-center gap-3" style={{ fontWeight: 800 }}>
           <span>Dziękuję za udział!</span>
           <Rocket className="w-12 h-12" />
@@ -163,9 +156,6 @@ export default function QASlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-2"
       >
-        <Badge className="bg-[#FEBE42] text-black border-[#FEBE42]">
-          Q&A - 30 minut
-        </Badge>
         <h2 className="text-5xl text-black" style={{ fontWeight: 800 }}>
           Kontakt i społeczność
         </h2>
