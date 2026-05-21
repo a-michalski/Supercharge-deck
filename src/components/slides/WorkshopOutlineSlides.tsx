@@ -127,7 +127,7 @@ export function WorkshopWelcomeSlide() {
   const agenda = [
     'Jak efektywnie pracować z AI w praktyce',
     'Schemat pracy z agentem: planowanie, realizacja, ocena',
-    'Konfiguracja Figma MCP i praca z design systemem',
+    'Konfiguracja Figma MCP i praca z agentem',
   ];
 
   return (
@@ -248,12 +248,16 @@ export function ModelContextPackageSlide() {
       annotation: '< Dostępne integracje, komendy, workflow\n   i wyspecjalizowane instrukcje agenta.',
     },
     {
-      label: 'Prompt projektu',
+      label: 'Reguły projektu',
       annotation: '< Wytyczne specyficzne dla tego repozytorium,\n   produktu lub zadania.',
     },
     {
-      label: 'Prompt użytkownika',
+      label: 'Reguły użytkownika',
       annotation: '< Twój ogólny profil, preferencje komunikacji\n   i stałe instrukcje.',
+    },
+    {
+      label: 'Prompt użytkownika',
+      annotation: '< Wiadomość, którą wpisujesz w danej chwili.',
       bold: true,
     },
     {
@@ -449,16 +453,19 @@ export function AgentWorkflowSlide() {
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
-      <div className="mb-24">
-        <SlideHeader
-          badge="SCHEMAT PRACY"
-          title="Podstawowy trójkrok z agentem"
-          subtitle="Najbezpieczniejszy proces to oddzielenie myślenia, wykonania i oceny. Każdy etap ma inną rolę."
-        />
-      </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className={slideFrameClass}
+    >
+      <SlideHeader
+        badge="SCHEMAT PRACY"
+        title="Podstawowy trójkrok z agentem"
+        subtitle="Najbezpieczniejszy proces to oddzielenie myślenia, wykonania i oceny. Każdy etap ma inną rolę."
+      />
 
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
+      <div className="grid md:grid-cols-3 gap-6">
         {steps.map((step, idx) => {
           return (
             <motion.div
@@ -533,7 +540,7 @@ export function AgentWorkflowSlide() {
       >
         Subagent dostaje tylko to, co musi mieć. Oszczędza tokeny i daje bardziej krytyczny feedback.
       </motion.p>
-    </div>
+    </motion.div>
   );
 }
 

@@ -10,24 +10,15 @@ import { usePostHog } from 'posthog-js/react';
 import TitleSlide from './components/slides/TitleSlide';
 import AboutSlide from './components/slides/AboutSlide';
 import VibeCodingSlide from './components/slides/VibeCodingSlide';
-import ToolsSetupSlide from './components/slides/ToolsSetupSlide';
-import CursorToolsSlide from './components/slides/CursorToolsSlide';
-import McpSetupSlide from './components/slides/McpSetupSlide';
-import DesignSystemRulesSlide from './components/slides/DesignSystemRulesSlide';
-import ExtractTokensSlide from './components/slides/ExtractTokensSlide';
 import PromptingRulesSlide from './components/slides/PromptingRulesSlide';
 import PromptingExampleSlide from './components/slides/PromptingExampleSlide';
-import ThreePathsSlide from './components/slides/ThreePathsSlide';
-import KeyPrinciplesSlide from './components/slides/KeyPrinciplesSlide';
+import AiDesignProcessSlide from './components/slides/AiDesignProcessSlide';
 import SummarySlide from './components/slides/SummarySlide';
-import StartFreshSlide from './components/slides/StartFreshSlide';
-import ComponentMigrationSlide from './components/slides/ComponentMigrationSlide';
 import FigmaAIReadySlide from './components/slides/FigmaAIReadySlide';
-import WorkingVersionSlide from './components/slides/WorkingVersionSlide';
 import TroubleshootingSlide from './components/slides/TroubleshootingSlide';
-import CursorRulesSlide from './components/slides/CursorRulesSlide';
 import ThanksSlide from './components/slides/ThanksSlide';
 import AIArchitectureSlide from './components/slides/AIArchitectureSlide';
+import ClaudeGlobalRulesSlide from './components/slides/ClaudeGlobalRulesSlide';
 import {
   AgentWorkflowSlide,
   AIMindsetSlide,
@@ -50,39 +41,27 @@ const slides = [
   { id: 4, title: 'Ramka nastawienia', component: AIMindsetSlide, duration: '2 min', icon: Brain },
   { id: 5, title: 'Jak działają narzędzia AI', component: AIArchitectureSlide, duration: '2 min', icon: Layers },
   { id: 6, title: 'Kontekst: pakiet modelu', component: ModelContextPackageSlide, duration: '2 min', icon: Database },
-  { id: 7, title: 'Zarządzanie kontekstem', component: ContextManagementSlide, duration: '2 min', icon: History },
-  { id: 8, title: 'Schemat pracy z agentem', component: AgentWorkflowSlide, duration: '3 min', icon: Route },
-  { id: 9, title: 'Weryfikacja deterministyczna', component: DeterministicVerificationSlide, duration: '3 min', icon: FileCheck2 },
-  { id: 10, title: 'Figma MCP', component: FigmaMcpIntroSlide, duration: '2 min', icon: Figma },
-  { id: 11, title: 'Instalacja Figma MCP', component: FigmaMcpInstallSlide, duration: '3 min', icon: Settings },
-  { id: 12, title: 'Narzędzia Figma MCP', component: FigmaMcpToolsSlide, duration: '4 min', icon: Wrench },
-  { id: 13, title: 'Pain: Foundations', component: FoundationsPainSlide, duration: '3 min', icon: Layers },
-  { id: 14, title: 'Pain: Atomic Design', component: AtomicDesignPainSlide, duration: '3 min', icon: Box },
-  { id: 15, title: 'Narzędzia + Setup', component: ToolsSetupSlide, duration: '2 min', icon: Code },
-  { id: 16, title: 'VS Code + Claude Code', component: CursorToolsSlide, duration: '3 min', icon: Sparkles },
-  { id: 17, title: 'CLAUDE.md', component: CursorRulesSlide, duration: '3 min', icon: FileText },
-  { id: 18, title: 'MCP + Setup środowiska', component: McpSetupSlide, duration: '2 min', icon: Settings },
-  { id: 19, title: 'Kluczowe zasady', component: KeyPrinciplesSlide, duration: '2 min', icon: Shield },
-  { id: 20, title: 'Zasady promptowania', component: PromptingRulesSlide, duration: '2 min', icon: MessageSquare },
-  { id: 21, title: 'Przykład promptowania', component: PromptingExampleSlide, duration: '2 min', icon: Edit },
-  { id: 22, title: 'Trzy ścieżki kodowania', component: ThreePathsSlide, duration: '2 min', icon: Route },
-  { id: 23, title: 'Make Figma AI-ready', component: FigmaAIReadySlide, duration: '2 min', icon: Layers },
-  { id: 24, title: 'Automatyczne Guidelines.md', component: DesignSystemRulesSlide, duration: '2 min', icon: FileCode },
-  { id: 25, title: 'Ekstrakcja tokenów', component: ExtractTokensSlide, duration: '2 min', icon: BookOpen },
-  { id: 26, title: 'Start Fresh', component: StartFreshSlide, duration: '2 min', icon: Zap },
-  { id: 27, title: 'Component Migration', component: ComponentMigrationSlide, duration: '2 min', icon: Box },
-  { id: 28, title: 'Working version', component: WorkingVersionSlide, duration: '2 min', icon: Play },
-  { id: 29, title: 'Troubleshooting', component: TroubleshootingSlide, duration: '3 min', icon: AlertTriangle },
-  { id: 30, title: 'Najważniejsze zasady', component: SummarySlide, duration: '5 min', icon: Trophy },
-  { id: 31, title: 'Dziękuję', component: ThanksSlide, duration: '1 min', icon: Heart },
+  { id: 7, title: 'Reguły użytkownika', component: ClaudeGlobalRulesSlide, duration: '2 min', icon: FileText },
+  { id: 8, title: 'Zarządzanie kontekstem', component: ContextManagementSlide, duration: '2 min', icon: History },
+  { id: 9, title: 'Schemat pracy z agentem', component: AgentWorkflowSlide, duration: '3 min', icon: Route },
+  { id: 10, title: 'Weryfikacja deterministyczna', component: DeterministicVerificationSlide, duration: '3 min', icon: FileCheck2 },
+  { id: 11, title: 'Figma MCP', component: FigmaMcpIntroSlide, duration: '2 min', icon: Figma },
+  { id: 12, title: 'Instalacja Figma MCP', component: FigmaMcpInstallSlide, duration: '3 min', icon: Settings },
+  { id: 13, title: 'Narzędzia Figma MCP', component: FigmaMcpToolsSlide, duration: '4 min', icon: Wrench },
+  { id: 14, title: 'Pain: Foundations', component: FoundationsPainSlide, duration: '3 min', icon: Layers },
+  { id: 15, title: 'Pain: Atomic Design', component: AtomicDesignPainSlide, duration: '3 min', icon: Box },
+  { id: 16, title: 'Zasady promptowania', component: PromptingRulesSlide, duration: '2 min', icon: MessageSquare },
+  { id: 17, title: 'Przykład promptowania', component: PromptingExampleSlide, duration: '2 min', icon: Edit },
+  { id: 18, title: 'AI w procesie projektowym', component: AiDesignProcessSlide, duration: '2 min', icon: Lightbulb },
+  { id: 19, title: 'Make Figma AI-ready', component: FigmaAIReadySlide, duration: '2 min', icon: Layers },
+  { id: 20, title: 'Troubleshooting', component: TroubleshootingSlide, duration: '3 min', icon: AlertTriangle },
+  { id: 21, title: 'Najważniejsze zasady', component: SummarySlide, duration: '5 min', icon: Trophy },
+  { id: 22, title: 'Dziękuję', component: ThanksSlide, duration: '1 min', icon: Heart },
 ];
 
 const arrowDownHandledSlides = new Set([
   PromptingExampleSlide,
-  DesignSystemRulesSlide,
-  ExtractTokensSlide,
-  StartFreshSlide,
-  ComponentMigrationSlide,
+  ClaudeGlobalRulesSlide,
 ]);
 
 export default function App() {

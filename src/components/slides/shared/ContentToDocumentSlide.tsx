@@ -46,7 +46,7 @@ export default function ContentToDocumentSlide({
   const defaultHints = {
     step1: 'Naciśnij ↓ aby zobaczyć dokument',
     step2: 'Naciśnij ↓ aby rozwinąć',
-    step3: 'Naciśnij ↓ aby wrócić do początku',
+    step3: 'Naciśnij ↓ aby przejść dalej',
   };
 
   const finalHints = { ...defaultHints, ...hints };
@@ -60,7 +60,7 @@ export default function ContentToDocumentSlide({
         } else if (step === 2) {
           setStep(3);
         } else if (step === 3) {
-          setStep(1); // Reset
+          window.dispatchEvent(new Event('presentation:next-slide'));
         }
       }
     };
@@ -106,7 +106,7 @@ export default function ContentToDocumentSlide({
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-[#1A1A3D] border border-white/10 rounded-lg p-6 overflow-hidden"
+      className="bg-[#EDE9E6] border border-black/15 rounded-lg p-6 overflow-hidden"
     >
       {leftContent}
     </motion.div>
@@ -228,7 +228,7 @@ export default function ContentToDocumentSlide({
             exit={{ opacity: 0 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="bg-[#1A1A3D] border border-white/10 rounded-lg p-6 overflow-hidden">
+            <div className="bg-[#EDE9E6] border border-black/15 rounded-lg p-6 overflow-hidden">
               {leftContent}
             </div>
             <BottomHint text={finalHints.step1} />
@@ -242,7 +242,7 @@ export default function ContentToDocumentSlide({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="max-w-7xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
             <div className="grid grid-cols-2 gap-6">
               {/* Left content */}

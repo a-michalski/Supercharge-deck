@@ -14,13 +14,13 @@ export default function ThanksSlide() {
       icon: Globe,
       label: 'Strona',
       url: 'https://adammichalski.com/',
-      color: '#46BAD8'
+      color: '#445469'
     },
     {
       icon: BookOpen,
       label: 'Blog',
       url: 'https://uxairforce.pl/',
-      color: '#FF438B'
+      color: '#EA148C'
     },
     {
       icon: Github,
@@ -31,8 +31,7 @@ export default function ThanksSlide() {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center px-8 py-12">
-      <div className="w-full max-w-5xl mx-auto space-y-12">
+    <div className="w-full max-w-5xl mx-auto space-y-8 text-center">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -90,35 +89,6 @@ export default function ThanksSlide() {
           })}
         </motion.div>
 
-        {/* GitHub Materials Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-        >
-          <a
-            href="https://github.com/a-michalski/Supercharge-deck"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <Card className="bg-gradient-to-r from-[#FEBE42] via-[#F69E2C] to-[#FEBE42] border-[#FEBE42] p-6 hover:shadow-2xl transition-all cursor-pointer group">
-              <div className="flex items-center justify-center gap-4">
-                <Github className="w-10 h-10 text-black" />
-                <div className="text-center">
-                  <p className="text-black text-xl" style={{ fontWeight: 800 }}>
-                    Materiały z prezentacji dostępne na GitHubie
-                  </p>
-                  <p className="text-black/80 text-sm" style={{ fontWeight: 600 }}>
-                    github.com/a-michalski/Supercharge-deck
-                  </p>
-                </div>
-                <ExternalLink className="w-6 h-6 text-black opacity-50 group-hover:opacity-100 transition-opacity" />
-              </div>
-            </Card>
-          </a>
-        </motion.div>
-
         {/* Heart Footer */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -128,11 +98,10 @@ export default function ThanksSlide() {
         >
           <div className="flex items-center justify-center gap-2 text-gray-500">
             <span>Made with</span>
-            <Heart className="w-5 h-5 text-[#FF438B] fill-[#FF438B]" />
+            <Heart className="w-5 h-5 text-[#EA148C] fill-[#EA148C]" />
             <span>by Adam Michalski</span>
           </div>
         </motion.div>
-      </div>
     </div>
   );
 }

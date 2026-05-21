@@ -5,6 +5,13 @@ import { Card } from '../ui/card';
 export default function VibeCodingSlide() {
   const vibeCoding = {
     title: 'Vibe Coding',
+    titleNode: (
+      <span>
+        Vibe{' '}
+        <span style={{ textDecoration: 'line-through', opacity: 0.45 }}>Coding</span>
+        {' '}Doing
+      </span>
+    ),
     icon: Zap,
     color: '#EA148C',
     description: 'Eksploracja bez planu. Rzucasz AI ideę, iterujesz na bieżąco.',
@@ -31,7 +38,7 @@ export default function VibeCodingSlide() {
         className="text-center space-y-2"
       >
         <h2 className="text-4xl text-black" style={{ fontWeight: 800 }}>
-          Dwa podejścia do kodowania z AI
+          Dwa podejścia do pracy z AI
         </h2>
       </motion.div>
 
@@ -53,7 +60,7 @@ export default function VibeCodingSlide() {
                     <Icon className="w-8 h-8" style={{ color: approach.color }} />
                   </div>
                   <div>
-                    <h3 className="text-2xl text-black" style={{ fontWeight: 700 }}>{approach.title}</h3>
+                    <h3 className="text-2xl text-black" style={{ fontWeight: 700 }}>{'titleNode' in approach ? approach.titleNode : approach.title}</h3>
                   </div>
                 </div>
 
@@ -88,41 +95,16 @@ export default function VibeCodingSlide() {
         })}
       </div>
 
-      {/* Sekwencja */}
+      {/* TL;DR */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
         className="text-center"
       >
-        <Card className="bg-[#EDE9E6] border-black/15 p-6">
-          <h4 className="text-sm uppercase tracking-wide text-gray-600 mb-3" style={{ fontWeight: 600 }}>
-            Sekwencja
-          </h4>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
-            <span className="text-gray-800" style={{ fontWeight: 700 }}>Vibe (prototyp)</span>
-            <span className="text-gray-400">→</span>
-            <span className="text-gray-800" style={{ fontWeight: 700 }}>ocena</span>
-            <span className="text-gray-400">→</span>
-            <span className="text-gray-800" style={{ fontWeight: 700 }}>Asistent Design (produkcja)</span>
-            <span className="text-gray-400">→</span>
-            <span className="text-gray-800" style={{ fontWeight: 700 }}>hybrid (maintenance)</span>
-          </div>
-        </Card>
-      </motion.div>
-
-      {/* TL;DR */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="text-center"
-      >
-        <Card className="bg-[#FEBE42] border-[#FEBE42] p-4 inline-block">
-          <p className="text-black">
-            <strong style={{ fontWeight: 800 }}>TL;DR:</strong> Oba są wartościowe w różnych fazach. <strong style={{ fontWeight: 700 }}>Vibe = szybko bez planu.</strong> <strong style={{ fontWeight: 700 }}>Asistent = kontrolowanie bez szybkości.</strong>
-          </p>
-        </Card>
+        <p className="text-black">
+          <strong style={{ fontWeight: 800 }}>TL;DR:</strong> Oba są wartościowe w różnych fazach. <strong style={{ fontWeight: 700 }}>Vibe = szybko bez planu.</strong> <strong style={{ fontWeight: 700 }}>Asistent = kontrolowanie bez szybkości.</strong>
+        </p>
       </motion.div>
     </div>
   );
